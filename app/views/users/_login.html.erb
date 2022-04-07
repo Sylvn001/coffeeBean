@@ -1,5 +1,5 @@
-<%= form_with(model: user) do |form| %>
-  <% if user && user.errors.any? %>
+<%= form_with(model:user, url: "/auth", method: :post) do |form| %>
+  <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -13,22 +13,17 @@
 
 
   <div class="divider d-flex align-items-center my-4">
-    <p class="text-center fw-bold mx-3 mb-0 display-4">Register</p>
-  </div>
-
-  <div class="form-outline mb-4">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control form-control-lg" %>
+    <p class="text-center fw-bold mx-3 mb-0 display-4">Login</p>
   </div>
 
   <div class="form-outline mb-4">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control form-control-lg" %>
+    <%= form.text_field :email, class: "form-control form-control-lg", placeholder:"Enter a valid email" %>
   </div>
 
   <div class="form-outline mb-3">
     <%= form.label :password %>
-    <%= form.text_field :password, class: "form-control form-control-lg" %>
+    <%= form.password_field  :password, class: "form-control form-control-lg", placeholder:"Enter a password"%>
   </div>
 
   <div class="d-flex justify-content-between align-items-center">
@@ -42,9 +37,9 @@
   </div>
 
   <div class="text-center text-lg-start mt-4 pt-2">
-    <%= form.submit class: "btn btn-primary btn-lg pl-2 pr-2" %>
+    <%= form.submit "Login", class: "btn btn-primary btn-lg pl-2 pr-2" %>
     <p class="small fw-bold mt-2 pt-1 mb-0">Already have account?
-      <%= link_to "Login", users_path  %>
+      <%= link_to "register", register_path %>
     </p>
   </div>
 

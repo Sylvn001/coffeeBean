@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
-  get 'register', to: 'users#register'
-  post 'auth', to: 'users#auth'
-
   get 'home', to: "home#index"
+  get 'register', to: 'users#register'
+  post 'auth', to: 'session#auth'
+  get 'logout', to: 'session#logout'
 
+
+  resources :users
   root "users#index"
 end

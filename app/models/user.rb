@@ -1,9 +1,4 @@
 class User < ApplicationRecord
-  include Mongoid::Document
-
-  field :name, type: String
-  field :email, type: String
-  field :password, type: String
 
   # VALID_EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   # VALID_PASSWORD_FORMAT = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,}$/
