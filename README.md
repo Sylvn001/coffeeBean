@@ -19,6 +19,8 @@
   open in bowser localhost:3000/
 ```
 
+## 🕸️ Test in WEB
+<a href="https://afternoon-shelf-48087.herokuapp.com"/> CoffeeBean Deployed </a>
 ## Layouts
 
 ### Register Form
