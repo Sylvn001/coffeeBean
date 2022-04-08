@@ -1,16 +1,4 @@
 <%= form_with(model:user, url: "/auth", method: :post) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 
   <div class="divider d-flex align-items-center my-4">
     <p class="text-center fw-bold mx-3 mb-0 display-4">Login</p>
@@ -25,6 +13,14 @@
     <%= form.label :password %>
     <%= form.password_field  :password, class: "form-control form-control-lg", placeholder:"Enter a password"%>
   </div>
+
+  <% if @errors %>
+    <div class="mt-4 text-danger">
+      <ul>
+        <li><%= @errors %></li>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="d-flex justify-content-between align-items-center">
     <div class="form-check mb-0">
@@ -44,4 +40,3 @@
   </div>
 
 <% end %>
-
