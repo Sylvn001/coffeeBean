@@ -18,8 +18,6 @@ class HomeController < ApplicationController
 
   private
     def require_login
-      unless session[:user_auth]
-        redirect_to users_path
-      end
+      redirect_to users_path unless session[:user_auth]
     end
 end

@@ -24,12 +24,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     #Rails.cache.keys
     respond_to do |format|
-      if @user
+      if @user && @user.valid?
         session[:users_list].push("#{@user.email};#{@user.name};#{@user.password}" )
         format.html { redirect_to users_path, notice: "User was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render :register, status: :unprocessable_entity }
       end
     end
   end
@@ -42,15 +41,13 @@ class UsersController < ApplicationController
       end
     end
 
-    def set_user
-      @user = user_params
-    end
-
     def user_params
       params.require(:user).permit(:name, :email, :password)
     end
 
     def is_authenticated
-      redirect_to home_path if session[:user_auth]
+     if session[:user_auth]
+      redirect_to home_path
+     end
     end
 end

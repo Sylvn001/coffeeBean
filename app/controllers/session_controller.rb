@@ -12,8 +12,10 @@ class SessionController < ApplicationController
   end
 
   def logout
-    session.delete(:user_auth) if session[:user_auth]
-    session.delete(:user) if session[:user]
+    if session[:user_auth]
+      session.delete(:user_auth)
+      session.delete(:user)
+    end
     redirect_to users_path
   end
 
