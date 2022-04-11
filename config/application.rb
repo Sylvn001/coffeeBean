@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require 'dotenv'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -9,8 +10,8 @@ Bundler.require(*Rails.groups)
 module CoffeeBean
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    Dotenv.load
     config.load_defaults 7.0
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

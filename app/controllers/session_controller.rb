@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class SessionController < ApplicationController
   before_action :set_user, only: %i[ auth ]
 
@@ -10,7 +12,8 @@ class SessionController < ApplicationController
 
       users = session[:users_list]
       user = user_exists?(users)
-      if user && @user.password.casecmp?(user[:password])
+      binding.pry
+      if user && @user.password == user[:password]
         session[:user_auth] = SecureRandom.base64(32)
         session[:user] = user
         redirect_to home_path
@@ -51,6 +54,7 @@ class SessionController < ApplicationController
 
     def set_user
       @user = User.new(user_params)
+      @user.password = user_params[:password]
     end
 
     def user_params

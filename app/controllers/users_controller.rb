@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    @user.password = user_params[:password]
     #Rails.cache.keys
     respond_to do |format|
       if @user && @user.valid?
